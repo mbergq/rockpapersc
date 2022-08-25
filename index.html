@@ -17,7 +17,7 @@
             return word;
         }
         console.log(word);
-        const playerSelection = "Rock";
+        const playerSelection = "Paper";
         const computerSelection = getComputerChoice();
         
         
@@ -25,7 +25,17 @@
             if (playerSelection === computerSelection) {
                 return "It's a draw!";
             }
+            else if (playerSelection > computerSelection) {
+                return "You lose!";
+            }
+            else if (playerSelection < computerSelection) {
+                return "Martin wins!";
+            }
+            else if (playerSelection < computerSelection) {
+                return "Martin is the winner!";
+            }
         }
+        console.log("Paper" < "Rock")
         console.log(playRound(playerSelection, computerSelection));
         
         
