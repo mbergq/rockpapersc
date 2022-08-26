@@ -9,7 +9,7 @@
     <body>
     <script>
 
-        let words = ["Rock", "Paper", "Scissor"];
+        let words = ["rock", "paper", "scissor"];
         
         let word = words[Math.floor(Math.random() * words.length)];
         
@@ -17,7 +17,8 @@
             return word;
         }
         console.log(word);
-        let playerSelection = prompt("Please type in your weapon of choice.");
+        let playerSelection = prompt("Please type in your weapon of choice.").toLowerCase();
+        console.log(playerSelection);
         const computerSelection = getComputerChoice();
         
         
@@ -25,22 +26,22 @@
             if (playerSelection === computerSelection) {
                 return "It's a draw!";
             }
-            else if ((playerSelection === "Rock") && (computerSelection === "Paper")) {
+            else if ((playerSelection === "rock") && (computerSelection === "paper")) {
                 return "Ouch! Paper beats Rock..";
             }
-            else if ((playerSelection === "Rock") && (computerSelection === "Scissor")) {
+            else if ((playerSelection === "rock") && (computerSelection === "scissor")) {
                 return "You win! Rock beats Scissor..";
             }
-            else if ((playerSelection === "Paper") && (computerSelection === "Rock")) {
+            else if ((playerSelection === "paper") && (computerSelection === "rock")) {
                 return "You win! Paper beats Rock..";
             }
-            else if ((playerSelection === "Paper") && (computerSelection === "Scissor")) {
+            else if ((playerSelection === "paper") && (computerSelection === "scissor")) {
                 return "Ouch! Scissor beats Paper..";
             }
-            else if ((playerSelection === "Scissor") && (computerSelection === "Rock")) {
+            else if ((playerSelection === "scissor") && (computerSelection === "rock")) {
                 return "Ouch! Rock beats Scissor..";
             }
-            else if ((playerSelection === "Scissor") && (computerSelection === "Paper")) {
+            else if ((playerSelection === "scissor") && (computerSelection === "paper")) {
                 return "You win! Scissor beats Paper";
             }
             //Declare an else statement here later if input equals undefined
