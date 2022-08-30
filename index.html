@@ -44,24 +44,50 @@
             else if ((playerSelection === "scissor") && (computerSelection === "paper")) {
                 return "You win! Scissor beats Paper";
             }
-            return playRound(playerSelection, computerSelection);
-            //Declare an else statement here later if input equals undefined
+            else return "NO!";
+            
         }
-
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                if (i === 0) {
-                    console.log("Round 1");
-                }
-                else if (i === 1) {
-                    console.log("Round 2");
-                }
-                return playRound(playerSelection, computerSelection);
+        let result = playRound(playerSelection, computerSelection);
+        let playerScore = 0;
+        let computerScore = 0;
+        function evaluator() {
+            switch (result) {
+                case "It's a draw!":
+                    console.log("Tie.");
+                    break;
+                case "Ouch! Paper beats Rock..":
+                    computerScore++;
+                    console.log("Computer wins");
+                    break;
+                case "You win! Rock beats Scissor..":
+                    playerScore++; //Potential error with ; sign
+                    console.log("Player wins");
+                    break;
+                case "You win! Paper beats Rock..":
+                    playerScore++;
+                    console.log("Player wins");
+                    break;
+                case "Ouch! Scissor beats Paper..":
+                    computerScore++;
+                    console.log("Computer wins");
+                    break;
+                case "Ouch! Rock beats Scissor..":
+                    computerScore++;
+                    console.log("Computer wins");
+                    break;
+                case "You win! Scissor beats Paper":
+                    playerScore++;
+                    console.log("Player wins");
+                    break;
+                    
             }
         }
-            
         
-        console.log(game());
+        
+        console.log(result);
+        console.log(evaluator());
+        console.log(playerScore);
+        console.log(computerScore);
         
         
         
