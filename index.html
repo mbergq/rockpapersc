@@ -27,6 +27,7 @@
                 return "It's a draw!";
             }
             else if ((playerSelection === "rock") && (computerSelection === "paper")) {
+
                 return "Ouch! Paper beats Rock..";
             }
             else if ((playerSelection === "rock") && (computerSelection === "scissor")) {
@@ -50,44 +51,53 @@
         let result = playRound(playerSelection, computerSelection);
         let playerScore = 0;
         let computerScore = 0;
-        function evaluator() {
+        function scoreCounter() {
             switch (result) {
                 case "It's a draw!":
-                    console.log("Tie.");
                     break;
                 case "Ouch! Paper beats Rock..":
                     computerScore++;
-                    console.log("Computer wins");
                     break;
                 case "You win! Rock beats Scissor..":
-                    playerScore++; //Potential error with ; sign
-                    console.log("Player wins");
+                    playerScore++;
                     break;
                 case "You win! Paper beats Rock..":
                     playerScore++;
-                    console.log("Player wins");
                     break;
                 case "Ouch! Scissor beats Paper..":
                     computerScore++;
-                    console.log("Computer wins");
                     break;
                 case "Ouch! Rock beats Scissor..":
                     computerScore++;
-                    console.log("Computer wins");
                     break;
                 case "You win! Scissor beats Paper":
                     playerScore++;
-                    console.log("Player wins");
                     break;
                     
             }
         }
         
+        function game() {
+            for (let i = 0; i < 4; i++) {
+                const playerSelection = prompt("Choose your weapon!").toLowerCase();
+                const computerSelection = getComputerChoice();
+                playRound(playerSelection, computerSelection);
+                scoreCounter();
+            }
+            if (playerScore > computerScore) {
+                return "You won!"
+            }
+            else if (playerScore < computerScore) {
+                return "You lose!"
+            }
+            else {
+                return "It's a tie!"
+            }
+        }   
+
+        console.log(game());
         
-        console.log(result);
-        console.log(evaluator());
-        console.log(playerScore);
-        console.log(computerScore);
+        
         
         
         
