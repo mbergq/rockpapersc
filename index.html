@@ -9,7 +9,7 @@
     <body>
     <script>
 
-        let words = ["rock", "paper", "scissor"];
+        let words = ["rock", "paper", "scissors"];
         
         let word = words[Math.floor(Math.random() * words.length)];
         
@@ -17,60 +17,55 @@
             return word;
         }
         console.log(word);
-        let playerSelection = prompt("Please type in your weapon of choice.").toLowerCase();
-        console.log(playerSelection);
         const computerSelection = getComputerChoice();
+        let playerScore = 0;
+        let computerScore = 0;
         
-        
-        function playRound(playerSelection, computerSelection) {
+        const playRound = (playerSelection, computerSelection) => {
             if (playerSelection === computerSelection) {
                 return "It's a draw!";
             }
             else if ((playerSelection === "rock") && (computerSelection === "paper")) {
-
                 return "Ouch! Paper beats Rock..";
             }
             else if ((playerSelection === "rock") && (computerSelection === "scissor")) {
-                return "You win! Rock beats Scissor..";
+                return "You win! Rock beats Scissors..";
             }
             else if ((playerSelection === "paper") && (computerSelection === "rock")) {
                 return "You win! Paper beats Rock..";
             }
             else if ((playerSelection === "paper") && (computerSelection === "scissor")) {
-                return "Ouch! Scissor beats Paper..";
+                return "Ouch! Scissors beats Paper..";
             }
-            else if ((playerSelection === "scissor") && (computerSelection === "rock")) {
-                return "Ouch! Rock beats Scissor..";
+            else if ((playerSelection === "scissors") && (computerSelection === "rock")) {
+                return "Ouch! Rock beats Scissors..";
             }
-            else if ((playerSelection === "scissor") && (computerSelection === "paper")) {
-                return "You win! Scissor beats Paper";
+            else if ((playerSelection === "scissors") && (computerSelection === "paper")) {
+                return "You win! Scissors beats Paper";
             }
-            else return "NO!";
             
         }
-        let result = playRound(playerSelection, computerSelection);
-        let playerScore = 0;
-        let computerScore = 0;
+        
         function scoreCounter() {
-            switch (result) {
+            switch (playRound) {
                 case "It's a draw!":
                     break;
                 case "Ouch! Paper beats Rock..":
                     computerScore++;
                     break;
-                case "You win! Rock beats Scissor..":
+                case "You win! Rock beats Scissors..":
                     playerScore++;
                     break;
                 case "You win! Paper beats Rock..":
                     playerScore++;
                     break;
-                case "Ouch! Scissor beats Paper..":
+                case "Ouch! Scissors beats Paper..":
                     computerScore++;
                     break;
-                case "Ouch! Rock beats Scissor..":
+                case "Ouch! Rock beats Scissors..":
                     computerScore++;
                     break;
-                case "You win! Scissor beats Paper":
+                case "You win! Scissors beats Paper":
                     playerScore++;
                     break;
                     
@@ -78,10 +73,10 @@
         }
         
         function game() {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
                 const playerSelection = prompt("Choose your weapon!").toLowerCase();
                 const computerSelection = getComputerChoice();
-                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
                 scoreCounter();
             }
             if (playerScore > computerScore) {
@@ -95,7 +90,7 @@
             }
         }   
 
-        console.log(game());
+    console.log(game());
         
         
         
