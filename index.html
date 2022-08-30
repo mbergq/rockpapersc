@@ -8,19 +8,15 @@
 </head>
     <body>
     <script>
-
-        let words = ["rock", "paper", "scissors"];
-        
-        let word = words[Math.floor(Math.random() * words.length)];
-        
-        function getComputerChoice() {
-            return word;
-        }
-        console.log(word);
-        const computerSelection = getComputerChoice();
         let playerScore = 0;
         let computerScore = 0;
         
+        const computerChoice = () => {
+            const choices = ["rock", "paper", "scissors"];
+            const randomNum = Math.floor(Math.random() * choices.length);
+            return choices[randomNum];
+        }
+        console.log(computerChoice());
         const playRound = (playerSelection, computerSelection) => {
             if (playerSelection === computerSelection) {
                 return "It's a draw!";
@@ -75,7 +71,7 @@
         function game() {
             for (let i = 0; i < 5; i++) {
                 const playerSelection = prompt("Choose your weapon!").toLowerCase();
-                const computerSelection = getComputerChoice();
+                const computerSelection = computerChoice();
                 console.log(playRound(playerSelection, computerSelection));
                 scoreCounter();
             }
