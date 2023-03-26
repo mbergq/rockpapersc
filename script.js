@@ -15,9 +15,11 @@ scissors.classList.add('scissors');
 scissors.textContent = "Scissors";
 container.appendChild(scissors);
 
-const outcomeDiv = document.querySelector('.outcome');
 let playerScore = 0;
 let computerScore = 0;
+
+const outcomeDiv = document.querySelector('.outcome');
+
 
 const computerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
@@ -56,36 +58,41 @@ const playRound = (playerSelection, computerSelection) => {
     
 }
 
+function playGame() {
+    playRound();
+    if (playerScore == 5) {
+        return "Player wins!";
+    }
+    else if (computerScore == 5) {
+        return "Computer wins!";
+    }
+}
+
+
 
 rock.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
-    console.log("Yep");
+    console.log("Rockz");
+    console.log(playerScore);
+    console.log(computerScore);
+    console.log(playGame());
 })
 
 scissors.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
-    console.log("Yep");
+    console.log("Scissorz");
 })
 
 paper.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
-    console.log("Yep");
+    console.log("Paperz");
 })
-
-
-
-
-
-
-
-
-
 
 
 
