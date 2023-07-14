@@ -1,4 +1,22 @@
-.outcome {
-    color: aquamarine;
-    text-decoration: line-through;
+#container {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.game {
+    color: royalblue;
+    background-color: rgb(185, 154, 139);
+    display: flex;
+    justify-content: center;
+    flex-basis: 1;
+    padding: 25px;
+}
+
+.rock {
+    width: fit-content;
 }
