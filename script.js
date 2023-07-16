@@ -4,6 +4,12 @@ const weaponBox = document.createElement('div');
 weaponBox.classList.add('weaponBox');
 container.appendChild(weaponBox);
 
+const choices = document.querySelectorAll('.weaponBox');
+
+const scoreDiv = document.createElement('div');
+scoreDiv.classList.add('scoreDiv');
+container.appendChild(scoreDiv);
+
 const rock = document.createElement('button');
 rock.classList.add('rock');
 rock.textContent = "Rock";
@@ -25,17 +31,30 @@ let computerScore = 0;
 let result = document.createElement('div');
 result.classList.add('game');
 result.textContent = "Game";
-container.appendChild(result);
+scoreDiv.appendChild(result);
 
 let playerBoard = document.createElement('div');
 playerBoard.classList.add('playerBoard');
-playerBoard.textContent = "0";
-container.appendChild(playerBoard);
+playerBoard.textContent = playerScore;
+scoreDiv.appendChild(playerBoard);
+
+let computerBoard = document.createElement('div');
+computerBoard.classList.add('computerBoard');
+computerBoard.textContent = computerScore;
+scoreDiv.appendChild(computerBoard);
+
+function updateScore() {
+    const playerScorePara = document.getElementById("pScore");
+    const computerScorePara = document.getElementById("cScore");
+
+    playerScorePara.textContent = `${playerScore}`;
+    computerScorePara.textContent = `${computerScore}`;
+}
 
 
 
 
-const computerChoice = () => {
+function computerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomNum = Math.floor(Math.random() * choices.length);
     return choices[randomNum];
@@ -71,6 +90,13 @@ const playRound = (playerSelection, computerSelection) => {
     }
     
 }
+
+choices.forEach(choice => choice.addEventListener('click', (event) => {
+    playRound(event);
+    updateScore();
+}));
+
+
 let run = playGame();
 
 function playGame() {
