@@ -33,22 +33,12 @@ result.classList.add('game');
 result.textContent = "Game";
 scoreDiv.appendChild(result);
 
-let playerBoard = document.createElement('div');
-playerBoard.classList.add('playerBoard');
-playerBoard.textContent = playerScore;
-scoreDiv.appendChild(playerBoard);
-
-let computerBoard = document.createElement('div');
-computerBoard.classList.add('computerBoard');
-computerBoard.textContent = computerScore;
-scoreDiv.appendChild(computerBoard);
-
 function updateScore() {
     const playerScorePara = document.getElementById("pScore");
     const computerScorePara = document.getElementById("cScore");
 
-    playerScorePara.textContent = `${playerScore}`;
-    computerScorePara.textContent = `${computerScore}`;
+    playerScorePara.textContent = `Player: ${playerScore}`;
+    computerScorePara.textContent = `Computer: ${computerScore}`;
 }
 
 
@@ -102,10 +92,10 @@ let run = playGame();
 function playGame() {
     playRound();
     if (playerScore == 5) {
-        alert ("Player wins!");
+        result.textContent = "Player wins!";
     }
     else if (computerScore == 5) {
-        return "Computer wins!";
+        result.textContent = "Computer wins!";
     }
 
 }
@@ -131,27 +121,19 @@ paper.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
-    console.log("Paperz");
 })
 
 
 container.addEventListener('click', function (e) {
-    console.log(e.target);
     
     if (e.target == rock) {
-        playerSelection = "rock";
-        result.textContent = "Bluerock lol";
-        console.log("You chose Rock!");
+
     }
     else if (e.target == paper) {
-        console.log("You chose Paper!")
-        result.textContent = "Bluepaper lol";
     }
     else if (e.target == scissors) {
-        console.log("You chose Scissors!");
     }
     else {
-        console.log("no");
     }
     
 })
