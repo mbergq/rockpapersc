@@ -1,9 +1,8 @@
 const container = document.querySelector('#container');
-
+const restartButton = document.querySelector('newGame');
 const weaponBox = document.createElement('div');
 weaponBox.classList.add('weaponBox');
 container.appendChild(weaponBox);
-
 const choices = document.querySelectorAll('.weaponBox');
 
 const scoreDiv = document.createElement('div');
@@ -25,14 +24,24 @@ scissors.classList.add('scissors');
 scissors.textContent = "Scissors";
 weaponBox.appendChild(scissors);
 
+
+//Player and Computer scores
 let playerScore = 0;
 let computerScore = 0;
 
+//Result display
 let result = document.createElement('div');
 result.classList.add('game');
 result.textContent = "Game";
 scoreDiv.appendChild(result);
 
+function newGame () {
+    playerScore = 0;
+    computerScore = 0;
+}
+
+
+//Score updator
 function updateScore() {
     const playerScorePara = document.getElementById("pScore");
     const computerScorePara = document.getElementById("cScore");
@@ -41,15 +50,17 @@ function updateScore() {
     computerScorePara.textContent = `Computer: ${computerScore}`;
 }
 
-
-
-
+//Computer weapon generator
 function computerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomNum = Math.floor(Math.random() * choices.length);
     return choices[randomNum];
 }
 
+
+
+
+//Game checker
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
         return "It's a draw!";
@@ -84,11 +95,10 @@ const playRound = (playerSelection, computerSelection) => {
 choices.forEach(choice => choice.addEventListener('click', (event) => {
     playRound(event);
     updateScore();
+    playGame();
 }));
 
-
-let run = playGame();
-
+//Winner checker
 function playGame() {
     playRound();
     if (playerScore == 5) {
@@ -104,17 +114,12 @@ rock.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
-    console.log("Rockz");
-    console.log(playerScore);
-    console.log(computerScore);
-    console.log(playGame());
 })
 
 scissors.addEventListener('click', () => {
     const computerSelection = computerChoice();
     const playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
-    console.log("Scissorz");
 })
 
 paper.addEventListener('click', () => {
@@ -124,22 +129,10 @@ paper.addEventListener('click', () => {
 })
 
 
-container.addEventListener('click', function (e) {
-    
-    if (e.target == rock) {
-
-    }
-    else if (e.target == paper) {
-    }
-    else if (e.target == scissors) {
-    }
-    else {
-    }
-    
-})
-
-
-
+document.getElementById("reset").onclick = function() {
+document.getElementById("cScore").innerHTML = `Computer: ${computerScore = 0}`;
+document.getElementById("pScore").innerHTML = `Player: ${playerScore = 0}`;
+    };
 
 
 
