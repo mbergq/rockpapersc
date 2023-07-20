@@ -13,11 +13,10 @@ header {
 
 .game {
     color: royalblue;
-    background-color: rgb(185, 154, 139);
+    background-color: bisque;
     display: flex;
-    justify-content: center;
-    flex-basis: 1;
-    padding: 25px;
+    padding: 50px;
+    width: 100px;
 }
 
 .rock {
@@ -29,6 +28,7 @@ header {
 }
 
 .scoreDiv {
-    width: 250px;
+    width: 800px;
     display: flex;
+    justify-content: center;
 }

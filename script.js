@@ -32,7 +32,7 @@ let computerScore = 0;
 //Result display
 let result = document.createElement('div');
 result.classList.add('game');
-result.textContent = "Game";
+result.textContent = "Choose a weapon to start the game!";
 scoreDiv.appendChild(result);
 
 function newGame () {
@@ -63,34 +63,35 @@ function computerChoice() {
 //Game checker
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
-        return "It's a draw!";
+        //Would like to display a "Draw!" here, but it did not seem to work,
+        //i might look into this one later
     }
     else if ((playerSelection === "rock") && (computerSelection === "paper")) {
         computerScore++;
-        return "Ouch! Paper beats Rock..";
+        result.textContent = "Ouch! Paper beats Rock..";
     }
     else if ((playerSelection === "rock") && (computerSelection === "scissors")) {
         playerScore++;
-        return "You win! Rock beats Scissors..";
+        result.textContent = "You win! Rock beats Scissors..";
     }
     else if ((playerSelection === "paper") && (computerSelection === "rock")) {
         playerScore++;
-        return "You win! Paper beats Rock..";
+        result.textContent = "You win! Paper beats Rock..";
     }
     else if ((playerSelection === "paper") && (computerSelection === "scissors")) {
         computerScore++;
-        return "Ouch! Scissors beats Paper..";
+        result.textContent = "Ouch! Scissors beats Paper..";
     }
     else if ((playerSelection === "scissors") && (computerSelection === "rock")) {
         computerScore++;
-        return "Ouch! Rock beats Scissors..";
+        result.textContent = "Ouch! Rock beats Scissors..";
     }
     else if ((playerSelection === "scissors") && (computerSelection === "paper")) {
         playerScore++;
-        return "You win! Scissors beats Paper";
+        result.textContent = "You win! Scissors beats Paper";
     }
-    
 }
+
 
 choices.forEach(choice => choice.addEventListener('click', (event) => {
     playRound(event);
@@ -111,30 +112,30 @@ function playGame() {
 }
 
 rock.addEventListener('click', () => {
-    const computerSelection = computerChoice();
+    let computerSelection = computerChoice();
     const playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
 })
 
 scissors.addEventListener('click', () => {
-    const computerSelection = computerChoice();
+    let computerSelection = computerChoice();
     const playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
 })
 
 paper.addEventListener('click', () => {
-    const computerSelection = computerChoice();
+    let computerSelection = computerChoice();
     const playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
+    console.log(computerSelection);
 })
 
-
+//Reset game function
 document.getElementById("reset").onclick = function() {
 document.getElementById("cScore").innerHTML = `Computer: ${computerScore = 0}`;
 document.getElementById("pScore").innerHTML = `Player: ${playerScore = 0}`;
+result.textContent = "Choose a weapon to start the game!";
     };
-
-
 
 
 
